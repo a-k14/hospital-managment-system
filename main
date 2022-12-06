@@ -1,0 +1,288 @@
+admin_password = "123"
+doctor_password = "abcd"
+user_password = "guest"
+patients = ['asad', 'imran']
+doctors = ['ahmad', 'sara']
+appointments = ['zara', 'farhan', 'aliya']
+surgery_schedule = ['ali at 3 pm', 'wasim at 6pm']
+e = "signing out"
+
+
+def ad_login():
+    username = input("enter username: ")
+    password = input("enter password: ")
+    while password != admin_password:
+        print("access denied")
+        username = input("enter username: ")
+        password = input("enter password: ")
+    print("welcome ", username)
+
+
+def doc_login():
+    username = input("enter username: ")
+    password = input("enter password: ")
+    while password != doctor_password:
+        print("access denied")
+        username = input("enter username: ")
+        password = input("enter password: ")
+    print("welcome ", username)
+
+
+def us_login():
+    username = input("enter username: ")
+    password = input("enter password: ")
+    while password != user_password:
+        print("access denied")
+        username = input("enter username: ")
+        password = input("enter password: ")
+    print("welcome ", username)
+
+
+def add_patient():
+    p_name = str(input("Please enter the name of patient: "))
+
+    while True:
+
+        try:
+
+            age = int(input("Please enter the age of the patient: "))
+
+            if age < 1 or age > 100:
+                print("enter a valid age")
+
+            else:
+                break
+
+        except:
+
+            print("enter an integer number")
+
+    gender = input("Please enter the gender of the patient: ")
+    import random
+    p_id = random.randint(1, 100)
+    print("patient id = ", p_id)
+    patients.append(p_name)
+    print("*patient added successfully*")
+
+
+def add_doctor():
+    d_name = str(input("Please enter the name of doctor: "))
+    department = input("Please enter the department of doctor: ")
+
+    while True:
+
+        try:
+
+            age = int(input("Please enter the age of the doctor: "))
+
+            if age < 1 or age > 100:
+                print("enter a valid age")
+
+            else:
+                break
+
+        except:
+
+            print("enter an integer number")
+    gender = input("Please enter the gender of the doctor: ")
+    import random
+    d_id = random.randint(1, 100)
+    print("doctor id = ", d_id)
+    doctors.append(d_name)
+    print("doctors added successfully")
+
+
+def add_prescription():
+    patient_name = input("enter name of patient: ")
+
+    while True:
+
+        try:
+
+            age = int(input("Please enter the age of the patient: "))
+
+            if age < 1 or age > 100:
+                print("enter a valid age")
+
+            else:
+                break
+
+        except:
+
+            print("enter an integer number")
+    diagnosis = input("enter diagnosis: ")
+    followup = input("enter when to come for follow-up: ")
+    print("record added successfully")
+
+
+def add_appointment():
+    p_name = str(input("Please enter the name of patient: "))
+
+    while True:
+
+        try:
+
+            age = int(input("Please enter the age of the patient: "))
+
+            if age < 1 or age > 100:
+                print("enter a valid age")
+
+            else:
+                break
+
+        except:
+
+            print("enter an integer number")
+    gender = input("Please enter the gender of the patient: ")
+
+
+def remove_appointment():
+    print(appointments)
+    print("choose name from above list")
+    patient_name = str(input("Enter the patient name: "))
+    appointments.remove(patient_name)
+    print("appointment removed successfully")
+
+
+def remove_patient():
+    print(patients)
+    print("choose name from above list")
+    patient_name = str(input("Please enter the patient name: "))
+    patients.remove(patient_name)
+    print("patient removed successfully")
+
+
+def remove_doc():
+    print(doctors)
+    print("choose name from above list")
+    doctor_name = str(input("Please enter the doctor name: "))
+    doctors.remove(doctor_name)
+    print("doctor removed successfully")
+
+
+print("********************************************************************")
+print("*                                                                  *")
+print("*             Welcome to Hospital Management System                *")
+print("*                                                                  *")
+print("********************************************************************")
+while True:
+    print("********************************************************************\npress 1 to enter admin mode\npress 2 "
+          "to enter doctor mode\npress 3 to enter user mode\npress 4 to go back\n"
+          "********************************************************************")
+
+    a = input("enter your choice: ")
+    while not a.isdigit() or int(a) not in range(1, 5):
+        print("choose valid choice")
+        a = input("enter your choice: ")
+
+    if a == "1":
+        print("welcome to admin mode")
+        ad_login()
+        print("********************************************************************\npress 1 to manage "
+              "patients\npress 2 to manage doctors\npress 3 to manage appointments\npress 4 to exit\n"
+              "********************************************************************")
+        b = input("enter your choice: ")
+        while not b.isdigit() or int(b) not in range(1, 5):
+            print("invalid choice")
+            b = input("enter your choice: ")
+
+        if b == "1":
+            print("********************************************************************\npress 1 to add "
+                  "patients\npress 2 to delete patients\npress 3 to view patients\npress 4 to exit\n"
+                  "********************************************************************")
+            c = input("enter your choice: ")
+            while not c.isdigit() or int(c) not in range(1, 5):
+                print("invalid choice")
+                c = input("enter your choice: ")
+            if c == "1":
+                add_patient()
+            elif c == "2":
+                remove_patient()
+            elif c == "3":
+                print(patients)
+            elif c == "4":
+                print(e)
+
+        elif b == "2":
+            print("********************************************************************\n"
+                  "press 1 to add a doctor\npress 2 to delete a doctor\npress 3 to view doctor\npress 4 to exit\n"
+                  "********************************************************************")
+            d = input("enter your choice: ")
+            while not d.isdigit() or int(d) not in range(1, 5):
+                print("invalid choice")
+                d = input("enter your choice: ")
+
+            if d == "1":
+                add_doctor()
+            elif d == "2":
+                remove_doc()
+            elif d == "3":
+                print(doctors)
+            elif d == "4":
+                print(e)
+        elif b == "3":
+
+            print("********************************************************************\n"
+                  "press 1 to add appointment\npress 2 to delete appointment\npress 3 to view appointments\npress 4 "
+                  "to exit\n "
+                  "********************************************************************")
+            f = input('enter a choice: ')
+            while not f.isdigit() or int(f) not in range(1, 5):
+                print("invalid choice")
+                f = input('enter a choice: ')
+
+            if f == "1":
+                add_appointment()
+                print("appointment added successfully")
+            elif f == "2":
+                remove_appointment()
+            elif f == "3":
+                print(appointments)
+            elif f == "4":
+                print(e)
+        elif b == "4":
+            print(e)
+
+    elif a == "2":
+        print("welcome to doctors portal")
+        doc_login()
+        print("********************************************************************\n"
+              "press 1 to view appointments\npress 2 to add prescription\npress 3 to view surgery schedule\npress 4 "
+              "to exit\n "
+              "********************************************************************")
+        g = input("enter a choice: ")
+        while not g.isdigit() or int(g) not in range(1, 5):
+            print("invalid choice")
+            g = input("enter a choice: ")
+
+        if g == "1":
+            print(appointments)
+        elif g == "2":
+            add_prescription()
+        elif g == "3":
+            print(surgery_schedule)
+        elif g == "4":
+            print(e)
+    elif a == "3":
+        print("welcome to patient mode")
+        us_login()
+        print("********************************************************************\n"
+              "to view doctors press 1\nto take an appointment press 2\npress 3 to exit\n"
+              "********************************************************************")
+        h = input("enter a choice: ")
+        while not h.isdigit() or int(h) not in range(1, 5):
+            print("invalid choice")
+            h = input("enter a choice: ")
+
+        if h == "1":
+            print(doctors)
+        elif h == "2":
+            add_appointment()
+            print("appointment would be confirmed soon")
+        elif h == "3":
+            print(e)
+    elif a == "4":
+        print("stay safe")
+    aa = eval(input("DO YOU WANT RETURN TO MAIN MENU so press 9: \nand 0 for exit:"))
+    if aa == 0:
+        exit()
